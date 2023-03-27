@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 208834695666493089}
   - component: {fileID: 208834695666493102}
   m_Layer: 5
-  m_Name: InstructionsScreen_FruitSorting
+  m_Name: InstructionsScreen_Popups
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 88, y: -17}
+  m_AnchoredPosition: {x: 88, y: -66}
   m_SizeDelta: {x: 680, y: 278}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &208834696272861481
@@ -504,7 +504,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 108, y: -328}
+  m_AnchoredPosition: {x: 108, y: -367}
   m_SizeDelta: {x: 660, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &208834696365443863

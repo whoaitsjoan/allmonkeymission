@@ -44,6 +44,6 @@ public class FruitCard : ScriptableObject
 
     public string FruitCardToString()
     {
-        return "Fruit Type: " + this.fruitType + " Is Flipped?: " + this.isFlipped;
+        return "Fruit Type: " + this.fruitType + "; Is Flipped?: " + this.isFlipped;
     }
 }

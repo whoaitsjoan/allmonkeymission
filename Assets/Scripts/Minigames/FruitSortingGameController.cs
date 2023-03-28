@@ -15,23 +15,16 @@ public class FruitSortingGameController : MonoBehaviour
     private List<FruitCard> cardList = new List<FruitCard>();
     private List<FruitCard> flippedCardsList = new List<FruitCard>();
 
-
-    // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         // Get list of lives
-        foreach (Image item in livesObject.GetComponentsInChildren<Image>() ) {
+        foreach (Image item in livesObject.GetComponentsInChildren<Image>()) 
+        {
             livesList.Add(item);
         }
 
         // Randomize fruit cards
         RandomizeCards();
-    }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        
     }
 
     private void RandomizeCards() 
@@ -65,10 +58,17 @@ public class FruitSortingGameController : MonoBehaviour
 
         FruitCard flippedCard = ScriptableObject.CreateInstance<FruitCard>();
         flippedCard = cardList[buttonInt];
+        flippedCard.isFlipped = true;
         flippedCardsList.Add(flippedCard);
-        foreach (FruitCard item in flippedCardsList)
+
+        foreach (Image img in button.GetComponentsInChildren<Image>())
         {
-            Debug.Log(item.FruitCardToString());
+            img.enabled = true;
+        }
+        
+        foreach (FruitCard fc in flippedCardsList)
+        {
+            Debug.Log(fc.FruitCardToString());
         }
 
         // Flip animation
@@ -81,7 +81,6 @@ public class FruitSortingGameController : MonoBehaviour
         {
             Debug.Log("ERROR: max two cards can be flipped at a time");
         }
-        
     }
 
     private bool CheckMatch()
@@ -109,17 +108,16 @@ public class FruitSortingGameController : MonoBehaviour
     // If there isn't a match, decrease the number of lives
     private void DecreaseLives()
     {
-        Color lostLife = new Color(132,132,132);
         if (livesLeft > 0 && livesList.Count > 0)
         {
             livesLeft = livesLeft - 1;
-            livesList.Last().color = lostLife;
+            livesList.Last().color = Color.black;
             livesList.Remove(livesList.Last());
-            // might need to get a list of the monkey lives (last in, first out)
         }
         else
         {
             Debug.Log("ERROR: No lives left!");
+            // End Game
         }
     }
 }

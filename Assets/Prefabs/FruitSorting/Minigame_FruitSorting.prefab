@@ -1402,9 +1402,17 @@ PrefabInstance:
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
+    - target: {fileID: 3878736821036444315, guid: 643beee932789134e85a50d26b4c797c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 3878736821036444315, guid: 643beee932789134e85a50d26b4c797c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4308994201600453028, guid: 643beee932789134e85a50d26b4c797c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7726245188456439700, guid: 643beee932789134e85a50d26b4c797c, type: 3}
       propertyPath: m_Type
@@ -1560,6 +1568,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7726245188456439703, guid: 643beee932789134e85a50d26b4c797c, type: 3}
       propertyPath: m_Name
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400318973763530222, guid: 643beee932789134e85a50d26b4c797c, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -1723,7 +1735,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4308994201600453028, guid: 643beee932789134e85a50d26b4c797c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7726245188456439701, guid: 643beee932789134e85a50d26b4c797c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode

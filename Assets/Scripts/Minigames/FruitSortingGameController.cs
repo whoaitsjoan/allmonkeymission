@@ -4,11 +4,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FruitSortingGameController : MonoBehaviour
 {
-    [SerializeField] GameObject gameObject;
-    private bool gameOver = false;
+    [SerializeField] GameObject buttonsParentObject;
+    [SerializeField] GameObject triesParentObject;
+    [SerializeField] TMP_Text gameWonText;
+    private bool outOfMatches = false;
+    private bool outOfLives = false;
+    [SerializeField] TMP_Text outOfLivesText;
 
     private int livesLeft = 5; //start with 5 lives at the beginning
     [SerializeField] private GameObject livesObject;
@@ -20,7 +25,7 @@ public class FruitSortingGameController : MonoBehaviour
     private List<Button> pressedButtonsList = new List<Button>();
     [SerializeField] Sprite[] fruitSprites; // array of fruits
 
-    [SerializeField] FlipCardAnimatorController flipCardAnimatorController;
+    private FlipCardAnimatorController flipCardAnimatorController;
 
     private void Awake()
     {
@@ -58,7 +63,7 @@ public class FruitSortingGameController : MonoBehaviour
         return fruitName;
     }
 
-    private void SetFruitSprite(FruitCard fc, Image img)
+    public void SetFruitSprite(FruitCard fc, Image img)
     {
         switch (fc.fruitType)
         {
@@ -93,7 +98,7 @@ public class FruitSortingGameController : MonoBehaviour
     {
         Image buttonImg = button.GetComponent<Image>();
         // TO DO: other cards shouldn't be interactable in this time
-        yield return new WaitForSeconds(1f); // pause so players can see cards
+        yield return new WaitForSeconds(2f); // pause so players can see cards
         buttonImg.sprite = fruitSprites[8];
         button.interactable = true; // reactivates buttons if not a match
     }
@@ -101,12 +106,7 @@ public class FruitSortingGameController : MonoBehaviour
 
     #region GameplayMethods
     public void OnCardClick(Button button) 
-    {
-        if (gameOver)
-        {
-            return;
-        }
-        
+    {        
         string buttonString = button.name;
         int buttonInt = (int) Int64.Parse(buttonString); // converts button name string to int
         Debug.Log(buttonInt + " was clicked!");
@@ -118,9 +118,8 @@ public class FruitSortingGameController : MonoBehaviour
         pressedButtonsList.Add(button);
 
         Image buttonImg = button.GetComponent<Image>();
-        SetFruitSprite(flippedCard, buttonImg);
         flipCardAnimatorController = button.GetComponent<FlipCardAnimatorController>();
-        flipCardAnimatorController.SetFlippingTrue();
+        flipCardAnimatorController.SetFlippingTrue(flippedCard, buttonImg);
         button.interactable = false;
         
         // for debugging only
@@ -172,8 +171,7 @@ public class FruitSortingGameController : MonoBehaviour
 
     private IEnumerator DeactivateCardsOnMatch(Button button)
     {
-        // TO DO: other cards shouldn't be interactable in this time
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         button.gameObject.SetActive(false);
     }
 
@@ -187,8 +185,8 @@ public class FruitSortingGameController : MonoBehaviour
             livesList.Remove(livesList.Last());
             if (livesLeft == 0)
             {
-                gameOver = true;
-                GameOver();
+                outOfLives = true;
+                StartCoroutine(GameOver());
             }
         }
         else
@@ -197,17 +195,27 @@ public class FruitSortingGameController : MonoBehaviour
         }
     }
 
-    private void SetAllOtherButtonsInactive()
+    private IEnumerator GameOver()
     {
-        // make all other buttons non-interactable when checking if match
-        // if match, do nothing (buttons will be deactivated)
-        // else, make sure clicked buttons are reset to interactable if not matching
+        yield return new WaitForSeconds(2f); // let animation end, maybe add function to check after animation ends if game is over
+        buttonsParentObject.SetActive(false);
+        triesParentObject.SetActive(false);
+        if (outOfLives)
+        {
+            outOfLivesText.enabled = true;
+            // add try again functionality
+        }
+        else
+        {
+            gameWonText.enabled = true;
+        }
     }
 
-    private void GameOver()
+    private void CheckMatchesLeft()
     {
-        // add game over panel
-        gameObject.SetActive(false);
+        // setup list with all buttons
+        // remove buttons as matched correctly
+        // when list is empty, game won
     }
     #endregion
 }

@@ -32,7 +32,7 @@ RectTransform:
   m_Children:
   - {fileID: 208834695422136446}
   m_Father: {fileID: 208834695666493103}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49884865, g: 0.7075472, b: 0.49061057, a: 1}
+  m_Color: {r: 0.078431375, g: 0.7921569, b: 0.93333334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -188,8 +188,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PLAY
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5a219011968793a4a893bc2bafe43edb, type: 2}
-  m_sharedMaterial: {fileID: -3311672631878283765, guid: 5a219011968793a4a893bc2bafe43edb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 870b309572ff34d458c2ccfacf710040, type: 2}
+  m_sharedMaterial: {fileID: -3311672631878283765, guid: 870b309572ff34d458c2ccfacf710040, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -265,7 +265,6 @@ GameObject:
   m_Component:
   - component: {fileID: 208834695666493103}
   - component: {fileID: 208834695666493089}
-  - component: {fileID: 208834695666493102}
   m_Layer: 5
   m_Name: InstructionsScreen_Popups
   m_TagString: Untagged
@@ -288,8 +287,8 @@ RectTransform:
   - {fileID: 208834696272861655}
   - {fileID: 208834696365443861}
   - {fileID: 208834697132005239}
-  - {fileID: 208834695340093825}
   - {fileID: 3952964059534345047}
+  - {fileID: 208834695340093825}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -306,36 +305,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208834695666493100}
   m_CullTransparentMesh: 1
---- !u!114 &208834695666493102
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 208834695666493100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &208834696272861652
 GameObject:
   m_ObjectHideFlags: 0
@@ -370,7 +339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 88, y: -66}
+  m_AnchoredPosition: {x: 78, y: -33}
   m_SizeDelta: {x: 680, y: 278}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &208834696272861481
@@ -401,7 +370,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FRUIT SORTING
+  m_text: CLOSE THOSE POPUPS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8b8e3bf99bf7aca46898f659812e168a, type: 2}
   m_sharedMaterial: {fileID: 6216570739191499135, guid: 8b8e3bf99bf7aca46898f659812e168a, type: 2}
@@ -410,8 +379,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289331135
-  m_fontColor: {r: 0.74849707, g: 1, b: 0.66415095, a: 1}
+    rgba: 4293839380
+  m_fontColor: {r: 0.078431375, g: 0.7921569, b: 0.93333334, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -464,7 +433,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -28.77118, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -504,7 +473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 108, y: -367}
+  m_AnchoredPosition: {x: 108, y: -361}
   m_SizeDelta: {x: 660, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &208834696365443863
@@ -535,7 +504,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Match those fruit! Click on matching pairs to get them back in the fridge!
+  m_text: The captain is trying to steer the ship but there's too many viruses! Click
+    them away before they ruin the console again!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5a219011968793a4a893bc2bafe43edb, type: 2}
   m_sharedMaterial: {fileID: -3311672631878283765, guid: 5a219011968793a4a893bc2bafe43edb, type: 2}
@@ -544,8 +514,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -562,8 +532,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 108
-  m_fontSizeBase: 108
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -598,7 +568,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -0.000030517578, z: -3.0059814, w: -294.53906}
+  m_margin: {x: -18.309052, y: -0.000030517578, z: -44.855164, w: -294.53906}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -690,6 +660,7 @@ GameObject:
   - component: {fileID: 4830654280090228743}
   - component: {fileID: 1367733480432325216}
   - component: {fileID: 1505782467660582934}
+  - component: {fileID: 57121053413998516}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -737,7 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.6117647, g: 0.7058824, b: 0.58431375, a: 1}
+  m_Color: {r: 0.3398362, g: 0.49012187, b: 0.8113208, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -754,6 +725,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &57121053413998516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349996619290501357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 10, y: 10}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1757180825196636400
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,7 +772,7 @@ RectTransform:
   m_Children:
   - {fileID: 8334978452969395100}
   m_Father: {fileID: 208834695666493103}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -814,7 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49884865, g: 0.7075472, b: 0.49061057, a: 1}
+  m_Color: {r: 0.078431375, g: 0.7921569, b: 0.93333334, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -942,8 +928,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BACK
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5a219011968793a4a893bc2bafe43edb, type: 2}
-  m_sharedMaterial: {fileID: -3311672631878283765, guid: 5a219011968793a4a893bc2bafe43edb, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 870b309572ff34d458c2ccfacf710040, type: 2}
+  m_sharedMaterial: {fileID: -3311672631878283765, guid: 870b309572ff34d458c2ccfacf710040, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

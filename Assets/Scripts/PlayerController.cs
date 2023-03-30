@@ -6,6 +6,21 @@ public class PlayerController : MonoBehaviour
 {
     public float walkSpeed;
     private Rigidbody2D rb;
+    private static PlayerController instance;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("ERROR: more than one PlayerController in scene!");
+        }
+        instance = this;
+    }
+
+    public static PlayerController GetInstance()
+    {
+        return instance;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +32,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateVelocity();
+        
     }
 
     private void UpdateVelocity()
@@ -40,4 +56,16 @@ public class PlayerController : MonoBehaviour
 
         rb.velocity = newVelocity;
     }
+
+    public void PlayingMinigame()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    public void EndMinigame()
+    {
+        this.gameObject.SetActive(true);
+    }
+
+   
 }

@@ -1,22 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu (fileName = "PopupWindow", menuName = "ScriptableObjects/PopupWindow", order = 2)]
 
 public class PopupWindow : ScriptableObject
 {
-    public float screenTime;
-    public string windowImage;
+    public Image windowImage;
     public float orderOnScreen;
 
     // Get Functions
-    public float GetScreenTime(float screentime)
-    {
-        return this.screenTime;
-    }
 
-    public string GetWindowImage(string image)
+    public Image GetWindowImage(Image img)
     {
         return this.windowImage;
     }
@@ -32,14 +30,10 @@ public class PopupWindow : ScriptableObject
     }
 
     // Set Functions
-    public void SetScreenTime(float screentime)
-    {
-        this.screenTime = screentime;
-    }
 
-    public void SetWindowImage(string image)
+    public void SetWindowImage(Image img)
     {
-        this.windowImage = image;
+        this.windowImage = img;
     }
     public void SetOrderOnScreen (float order)
     {

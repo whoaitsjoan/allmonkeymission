@@ -8,31 +8,44 @@ using TMPro;
 
 public class FruitSortingGameController : MonoBehaviour
 {
+    // Button variables
     [SerializeField] GameObject buttonsParentObject;
+    int activeButtonsCount = 0; // gets populated in Awake()
+
+    // Game State (Win or Lose) Variables
     [SerializeField] GameObject triesParentObject;
     [SerializeField] TMP_Text gameWonText;
     private bool outOfMatches = false;
     private bool outOfLives = false;
     [SerializeField] TMP_Text outOfLivesText;
+    [SerializeField] Button restartButtonObject;
+    [SerializeField] GameObject minigameObject;
 
-    private int livesLeft = 5; //start with 5 lives at the beginning
+    private int livesLeft = 0; // gets populated in Awake()
     [SerializeField] private GameObject livesObject;
     private List<Image> livesList = new List<Image>();
+    public bool taskComplete = true;
 
+    // FruitCard variables
     private List<string> fruitNameList = new List<string>() {"apple","apple","banana","banana","grapes","grapes","strawberry","strawberry","watermelon","watermelon","orange","orange","pineapple","pineapple","peach","peach"};
     private List<FruitCard> cardList = new List<FruitCard>();
     private List<FruitCard> flippedCardsList = new List<FruitCard>();
     private List<Button> pressedButtonsList = new List<Button>();
     [SerializeField] Sprite[] fruitSprites; // array of fruits
-
     private FlipCardAnimatorController flipCardAnimatorController;
 
     private void Awake()
     {
+        foreach (Image item in buttonsParentObject.GetComponentsInChildren<Image>()) 
+        {
+            activeButtonsCount = activeButtonsCount + 1;
+        }
+        
         // Get list of lives
         foreach (Image item in livesObject.GetComponentsInChildren<Image>()) 
         {
             livesList.Add(item);
+            livesLeft = livesLeft + 1;
         }
 
         // Randomize fruit cards
@@ -153,6 +166,12 @@ public class FruitSortingGameController : MonoBehaviour
             foreach (Button correctMatch in pressedButtonsList)
             {
                 StartCoroutine(DeactivateCardsOnMatch(correctMatch));
+                activeButtonsCount = activeButtonsCount - 1;
+                if (activeButtonsCount == 0)
+                {
+                    outOfMatches = true;
+                    StartCoroutine(EndGame());
+                }
             }
         }
         else // else, decrease lives and flip cards back over
@@ -186,7 +205,7 @@ public class FruitSortingGameController : MonoBehaviour
             if (livesLeft == 0)
             {
                 outOfLives = true;
-                StartCoroutine(GameOver());
+                StartCoroutine(EndGame());
             }
         }
         else
@@ -195,7 +214,7 @@ public class FruitSortingGameController : MonoBehaviour
         }
     }
 
-    private IEnumerator GameOver()
+    private IEnumerator EndGame()
     {
         yield return new WaitForSeconds(2f); // let animation end, maybe add function to check after animation ends if game is over
         buttonsParentObject.SetActive(false);
@@ -203,19 +222,66 @@ public class FruitSortingGameController : MonoBehaviour
         if (outOfLives)
         {
             outOfLivesText.enabled = true;
-            // add try again functionality
+            restartButtonObject.gameObject.SetActive(true);
         }
-        else
+        else if (outOfMatches)
         {
             gameWonText.enabled = true;
+            taskComplete = true;
         }
     }
 
-    private void CheckMatchesLeft()
+    public void RestartGame()
     {
-        // setup list with all buttons
-        // remove buttons as matched correctly
-        // when list is empty, game won
+        activeButtonsCount = 0;
+        foreach (Image item in buttonsParentObject.GetComponentsInChildren<Image>(true)) 
+        {
+            activeButtonsCount = activeButtonsCount + 1;
+            if (!item.gameObject.activeInHierarchy)
+            {
+                item.sprite = fruitSprites[8];
+                item.GetComponent<Button>().interactable = true;
+            }
+            item.gameObject.SetActive(true);
+        }
+
+        // Game State (Win or Lose) Variables
+        gameWonText.enabled = false;
+        outOfMatches = false;
+        outOfLives = false;
+        outOfLivesText.enabled = false;
+        restartButtonObject.gameObject.SetActive(false);
+
+        livesLeft = 0; // gets populated in Awake()
+        livesList = new List<Image>();
+        foreach (Image item in livesObject.GetComponentsInChildren<Image>()) 
+        {
+            livesList.Add(item);
+            livesLeft = livesLeft + 1;
+            item.color = Color.white;
+        }
+
+        // FruitCard variables
+        fruitNameList = new List<string>() {"apple","apple","banana","banana","grapes","grapes","strawberry","strawberry","watermelon","watermelon","orange","orange","pineapple","pineapple","peach","peach"};
+        cardList = new List<FruitCard>();
+        flippedCardsList = new List<FruitCard>();
+        pressedButtonsList = new List<Button>();
+
+        RandomizeCards();
+        buttonsParentObject.SetActive(true);
+        triesParentObject.SetActive(true);
+    }
+
+    public bool GetTaskStatus()
+    {
+        if (taskComplete)
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
     }
     #endregion
 }

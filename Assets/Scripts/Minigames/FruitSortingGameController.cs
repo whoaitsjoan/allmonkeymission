@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 
 public class FruitSortingGameController : MonoBehaviour
-{
+{    
     // Button variables
     [SerializeField] GameObject buttonsParentObject;
     int activeButtonsCount = 0; // gets populated in Awake()
@@ -20,7 +20,6 @@ public class FruitSortingGameController : MonoBehaviour
     [SerializeField] TMP_Text outOfLivesText;
     [SerializeField] Button restartButtonObject;
     [SerializeField] GameObject minigameObject;
-
     private int livesLeft = 0; // gets populated in Awake()
     [SerializeField] private GameObject livesObject;
     private List<Image> livesList = new List<Image>();
@@ -35,7 +34,7 @@ public class FruitSortingGameController : MonoBehaviour
     private FlipCardAnimatorController flipCardAnimatorController;
 
     private void Awake()
-    {
+    {        
         foreach (Image item in buttonsParentObject.GetComponentsInChildren<Image>()) 
         {
             activeButtonsCount = activeButtonsCount + 1;
@@ -228,6 +227,7 @@ public class FruitSortingGameController : MonoBehaviour
         {
             gameWonText.enabled = true;
             taskComplete = true;
+            SendTaskStatus();
         }
     }
 
@@ -272,15 +272,14 @@ public class FruitSortingGameController : MonoBehaviour
         triesParentObject.SetActive(true);
     }
 
-    public bool GetTaskStatus()
+    public void SendTaskStatus()
     {
+        if (GameController.GetInstance() != null) {
+            Debug.Log("GameController.GetInstance() is not null!");
+        }
         if (taskComplete)
         {
-            return true;
-        }
-        else 
-        {
-            return false;
+            GameController.GetInstance().SetFruitSortingComplete();
         }
     }
     #endregion

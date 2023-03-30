@@ -23,7 +23,7 @@ public class FruitSortingGameController : MonoBehaviour
     private int livesLeft = 0; // gets populated in Awake()
     [SerializeField] private GameObject livesObject;
     private List<Image> livesList = new List<Image>();
-    public bool taskComplete = true;
+    public bool taskComplete = false;
 
     // FruitCard variables
     private List<string> fruitNameList = new List<string>() {"apple","apple","banana","banana","grapes","grapes","strawberry","strawberry","watermelon","watermelon","orange","orange","pineapple","pineapple","peach","peach"};

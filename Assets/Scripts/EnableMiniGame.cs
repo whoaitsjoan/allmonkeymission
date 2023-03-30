@@ -7,25 +7,16 @@ public class EnableMiniGame : MonoBehaviour
     [SerializeField] private GameObject visualCue;
     private bool playerInRange = false;
 
-    private GameController gameControllerInstance;
-
     [SerializeField] private GameObject fruitSortingInstructions;
     [SerializeField] private GameObject popupInstructions;
 
-
-    private static EnableMiniGame instance;
 
     // Start is called before the first frame update
     void Start()
     {
         visualCue.SetActive(false);
-        gameControllerInstance = GameController.GetInstance();
 
-        if (instance != null)
-        {
-            Debug.Log("ERROR: more than one PlayerController in scene!");
-        }
-        instance = this;
+       
     }
 
     // Update is called once per frame
@@ -48,6 +39,12 @@ public class EnableMiniGame : MonoBehaviour
         else 
         {
             visualCue.SetActive(false);
+        }
+
+        if (Input.GetKey(KeyCode.Return) && playerInRange)
+        {
+             Debug.Log("Getting OpenInstructionsScreen()");
+            OpenInstructionsScreen();
         }
     }
 
@@ -79,6 +76,7 @@ public class EnableMiniGame : MonoBehaviour
         if (this.transform.parent.name == "Refrigerator")
         {
             fruitSortingInstructions.SetActive(true);
+            PlayerController.GetInstance().PlayingMinigame();
         }
         else if (this.transform.parent.name == "Monitors")
         {
@@ -86,8 +84,9 @@ public class EnableMiniGame : MonoBehaviour
         }
     }
 
-    public static EnableMiniGame GetInstance()
+    public void CloseInstructionsScreen()
     {
-        return instance;
+        PlayerController.GetInstance().EndMinigame();
     }
+    
 }

@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.Log("ERROR: more than one PlayerController in scene!");
+            Debug.Log("ERROR: more than one GameController in scene!");
         }
         instance = this;
     }

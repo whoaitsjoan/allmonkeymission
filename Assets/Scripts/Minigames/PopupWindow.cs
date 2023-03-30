@@ -8,6 +8,7 @@ public class PopupWindow : ScriptableObject
 {
     public float screenTime;
     public string windowImage;
+    public float orderOnScreen;
 
     // Get Functions
     public float GetScreenTime(float screentime)
@@ -18,6 +19,11 @@ public class PopupWindow : ScriptableObject
     public string GetWindowImage(string image)
     {
         return this.windowImage;
+    }
+
+    public float GetOrderOnScreen (float order)
+    {
+        return this.orderOnScreen;
     }
 
     public PopupWindow GetPopupWindow()
@@ -35,6 +41,9 @@ public class PopupWindow : ScriptableObject
     {
         this.windowImage = image;
     }
-
+    public void SetOrderOnScreen (float order)
+    {
+        this.orderOnScreen = order;
+    }
 
 }

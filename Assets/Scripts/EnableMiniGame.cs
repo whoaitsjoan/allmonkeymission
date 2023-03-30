@@ -23,7 +23,7 @@ public class EnableMiniGame : MonoBehaviour
 
         if (instance != null)
         {
-            Debug.Log("ERROR: more than one PlayerController in scene!");
+            Debug.Log("ERROR: more than one EnableMiniGame in scene!");
         }
         instance = this;
     }
@@ -86,8 +86,12 @@ public class EnableMiniGame : MonoBehaviour
         }
     }
 
-    public static EnableMiniGame GetInstance()
+    public void OnInteractPressed()
     {
-        return instance;
+        if (Input.GetKey(KeyCode.Return) && playerInRange)
+        {
+            Debug.Log("Getting OpenInstructionsScreen()");
+            OpenInstructionsScreen();
+        }
     }
 }

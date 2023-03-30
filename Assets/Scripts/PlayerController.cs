@@ -17,10 +17,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         UpdateVelocity();
-        if (Input.GetKey(KeyCode.Return))
-        {
-            OnInteractPressed();
-        }
     }
 
     private void UpdateVelocity()
@@ -43,14 +39,5 @@ public class PlayerController : MonoBehaviour
         }
 
         rb.velocity = newVelocity;
-    }
-
-    public void OnInteractPressed()
-    {
-        if (EnableMiniGame.GetInstance().GetPlayerInRange())
-        {
-            Debug.Log("Getting OpenInstructionsScreen()");
-            EnableMiniGame.GetInstance().OpenInstructionsScreen();
-        }
     }
 }

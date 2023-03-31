@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float walkSpeed;
     private Rigidbody2D rb;
     private static PlayerController instance;
+    private bool inMinigame = false;
 
     void Awake()
     {
@@ -39,12 +40,12 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 newVelocity = rb.velocity; 
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && !inMinigame)
         {
             newVelocity.x = -walkSpeed;
         }
 
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) && !inMinigame)
         {
             newVelocity.x = walkSpeed;
         }
@@ -59,12 +60,12 @@ public class PlayerController : MonoBehaviour
 
     public void PlayingMinigame()
     {
-        this.gameObject.SetActive(false);
+        inMinigame = true;
     }
 
     public void EndMinigame()
     {
-        this.gameObject.SetActive(true);
+        inMinigame = false;
     }
 
    

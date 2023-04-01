@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class ShipAnimationController : MonoBehaviour
 {
+    private Animator animator;
+    private int tasksComplete = 0;
+    private static ShipAnimationController instance;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        if (instance != null)
+        {
+            Debug.Log("ERROR: more than one PlayerController in scene!");
+        }
+        instance = this;
+    }
+
+    public void SetMiniGameComplete()
+    {
+        tasksComplete = tasksComplete + 1;
+        animator.SetInteger("tasksComplete", tasksComplete);
+    }
+
+    public static ShipAnimationController GetInstance()
+    {
+        return instance;
     }
 }

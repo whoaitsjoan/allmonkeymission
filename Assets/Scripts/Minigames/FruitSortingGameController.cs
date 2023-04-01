@@ -274,12 +274,10 @@ public class FruitSortingGameController : MonoBehaviour
 
     public void SendTaskStatus()
     {
-        if (GameController.GetInstance() != null) {
-            Debug.Log("GameController.GetInstance() is not null!");
-        }
         if (taskComplete)
         {
             GameController.GetInstance().SetFruitSortingComplete();
+            ShipAnimationController.GetInstance().SetMiniGameComplete();
         }
     }
     #endregion

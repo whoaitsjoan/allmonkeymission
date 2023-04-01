@@ -18,7 +18,7 @@ public class ShipAnimationController : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.Log("ERROR: more than one PlayerController in scene!");
+            Debug.Log("ERROR: more than one ShipAnimationController in scene!");
         }
         instance = this;
     }

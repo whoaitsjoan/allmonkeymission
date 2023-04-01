@@ -81,12 +81,9 @@ public class EnableMiniGame : MonoBehaviour
         else if (this.transform.parent.name == "Monitors")
         {
             popupInstructions.SetActive(true);
+            PlayerController.GetInstance().PlayingMinigame();
         }
     }
 
-    // public void CloseInstructionsScreen()
-    // {
-    //     PlayerController.GetInstance().EndMinigame();
-    // }
     
 }

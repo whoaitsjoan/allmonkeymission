@@ -84,9 +84,9 @@ public class EnableMiniGame : MonoBehaviour
         }
     }
 
-    public void CloseInstructionsScreen()
-    {
-        PlayerController.GetInstance().EndMinigame();
-    }
+    // public void CloseInstructionsScreen()
+    // {
+    //     PlayerController.GetInstance().EndMinigame();
+    // }
     
 }

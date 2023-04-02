@@ -33,8 +33,14 @@ public class FruitSortingGameController : MonoBehaviour
     [SerializeField] Sprite[] fruitSprites; // array of fruits
     private FlipCardAnimatorController flipCardAnimatorController;
 
+    [SerializeField] AudioSource winAudio;
+    [SerializeField] AudioSource loseAudio;
+    [SerializeField] AudioSource matchAudio;
+    [SerializeField] AudioSource mismatchAudio;
+
     private void Awake()
     {        
+        // Get count of buttons
         foreach (Image item in buttonsParentObject.GetComponentsInChildren<Image>()) 
         {
             activeButtonsCount = activeButtonsCount + 1;
@@ -109,10 +115,11 @@ public class FruitSortingGameController : MonoBehaviour
     private IEnumerator ResetCardOnMismatch(Button button)
     {
         Image buttonImg = button.GetComponent<Image>();
-        // TO DO: other cards shouldn't be interactable in this time
-        yield return new WaitForSeconds(2f); // pause so players can see cards
+        ButtonsNotInteractable();
+        yield return new WaitForSeconds(1.5f); // pause so players can see cards
+        mismatchAudio.Play(0);
         buttonImg.sprite = fruitSprites[8];
-        button.interactable = true; // reactivates buttons if not a match
+        ButtonsInteractable();
     }
     #endregion
 
@@ -189,8 +196,11 @@ public class FruitSortingGameController : MonoBehaviour
 
     private IEnumerator DeactivateCardsOnMatch(Button button)
     {
-        yield return new WaitForSeconds(2f);
+        ButtonsNotInteractable();
+        yield return new WaitForSeconds(1.5f);
+        matchAudio.Play(0);
         button.gameObject.SetActive(false);
+        ButtonsInteractable();
     }
 
     // If there isn't a match, decrease the number of lives
@@ -222,6 +232,7 @@ public class FruitSortingGameController : MonoBehaviour
         {
             outOfLivesText.enabled = true;
             restartButtonObject.gameObject.SetActive(true);
+            loseAudio.Play(0);
         }
         else if (outOfMatches)
         {
@@ -278,6 +289,23 @@ public class FruitSortingGameController : MonoBehaviour
         {
             GameController.GetInstance().SetFruitSortingComplete();
             ShipAnimationController.GetInstance().SetMiniGameComplete();
+            winAudio.Play(0);
+        }
+    }
+
+    public void ButtonsInteractable()
+    {
+        foreach (Button button in buttonsParentObject.GetComponentsInChildren<Button>()) 
+        {
+            button.interactable = true;
+        }
+    }
+
+    public void ButtonsNotInteractable()
+    {
+        foreach (Button button in buttonsParentObject.GetComponentsInChildren<Button>())
+        {
+            button.interactable = false;
         }
     }
     #endregion

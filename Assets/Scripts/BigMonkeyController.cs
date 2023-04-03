@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BigMonkeyController : MonoBehaviour
 {
     [SerializeField] AudioSource monkeAudio;
     [SerializeField] GameObject visualCue;
+
+    public string sceneToLoad;
 
     bool playerInRange = false;
 
@@ -13,7 +16,7 @@ public class BigMonkeyController : MonoBehaviour
     {
         if (playerInRange)
         {
-            PlayMonkeSound();
+            StartCoroutine(PlayMonkeSound());
         }
     }
     
@@ -40,11 +43,19 @@ public class BigMonkeyController : MonoBehaviour
         }
     }
 
-    private void PlayMonkeSound()
+    private IEnumerator PlayMonkeSound()
     {
         if (Input.GetKey(KeyCode.Return))
         {
             monkeAudio.Play(0);
+
+            yield return new WaitForSeconds(2f);
+            RollCredits();
         }
+    }
+
+    private void RollCredits()
+    {
+        SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
     }
 }

@@ -15,8 +15,6 @@ public class EnableMiniGame : MonoBehaviour
     void Start()
     {
         visualCue.SetActive(false);
-
-       
     }
 
     // Update is called once per frame
@@ -36,14 +34,14 @@ public class EnableMiniGame : MonoBehaviour
                 visualCue.SetActive(true);
             }
         }
-        else 
-        {
-            visualCue.SetActive(false);
-        }
+        // else 
+        // {
+        //     visualCue.SetActive(false);
+        // }
 
         if (Input.GetKey(KeyCode.Return) && playerInRange)
         {
-             Debug.Log("Getting OpenInstructionsScreen()");
+            Debug.Log("Getting OpenInstructionsScreen()");
             OpenInstructionsScreen();
         }
     }
@@ -66,6 +64,7 @@ public class EnableMiniGame : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             playerInRange = false;
+            visualCue.SetActive(false);
         }
     }
 

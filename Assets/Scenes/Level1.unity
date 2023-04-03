@@ -4280,6 +4280,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fruitSortingTask: {fileID: 194174167}
   popupTask: {fileID: 384537785}
+  spaceBanana: {fileID: 0}
+  bigMonkey: {fileID: 0}
+  originalWall: {fileID: 0}
+  fakeWall: {fileID: 0}
 --- !u!1 &920671901
 GameObject:
   m_ObjectHideFlags: 0
@@ -17849,6 +17853,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 700
       objectReference: {fileID: 0}
+    - target: {fileID: 249801610350251382, guid: f16076c89ad2c9b40b9d40b1f5118210, type: 3}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 349996619290501357, guid: f16076c89ad2c9b40b9d40b1f5118210, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -17865,6 +17873,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.21568629
       objectReference: {fileID: 0}
+    - target: {fileID: 1951630138441514382, guid: f16076c89ad2c9b40b9d40b1f5118210, type: 3}
+      propertyPath: rawImgTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 54c118039373bf94b85a8ea69dd08d08, type: 3}
     - target: {fileID: 3992153603061185157, guid: f16076c89ad2c9b40b9d40b1f5118210, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2

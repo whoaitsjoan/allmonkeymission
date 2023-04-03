@@ -7,12 +7,12 @@ using UnityEngine.Video;
 public class InstructionsScreen_PlayVideo : MonoBehaviour
 {
     [SerializeField] RawImage rawImage;
+    [SerializeField] Texture rawImgTexture;
     [SerializeField] VideoPlayer videoPlayer;
 
-    void Awake()
+    private void OnEnable()
     {
-        // rawImage.GetComponent<RawImage>();
-        // videoPlayer.GetComponent<VideoPlayer>();
+        rawImage.texture = rawImgTexture;
         StartCoroutine(PlayVideo());
     }
 

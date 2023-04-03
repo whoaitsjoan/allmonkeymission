@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float walkSpeed;
+    public float jumpHeight;
     private Rigidbody2D rb;
+    private bool canJump;
     private static PlayerController instance;
     private bool inMinigame = false;
 
@@ -32,8 +34,12 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space) && canJump == true)
+        {
+            rb.velocity = Vector2.up * jumpHeight;
+        }
+
         UpdateVelocity();
-        
     }
 
     private void UpdateVelocity()
@@ -67,6 +73,22 @@ public class PlayerController : MonoBehaviour
     {
         inMinigame = false;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //If we collide with an object tagged "ground" then our jump resets and we can now jump.
+        if (collision.gameObject.tag == "ground")
+        {
+            canJump = true;
+        }
+    }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //If we exit our collision with the "ground" object, then we are unable to jump.
+        if (collision.gameObject.tag == "ground")
+        {
+            canJump = false;
+        }
+    }
    
 }

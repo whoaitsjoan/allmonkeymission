@@ -14,8 +14,6 @@ public class GameController : MonoBehaviour
 
     public GameObject spaceBanana;
     public GameObject bigMonkey;
-    public GameObject originalWall;
-    public GameObject fakeWall;
 
     private static GameController instance;
 
@@ -73,7 +71,5 @@ public class GameController : MonoBehaviour
         winGame = true;
         spaceBanana.SetActive(true);
         bigMonkey.SetActive(true);
-        originalWall.SetActive(false);
-        fakeWall.SetActive(true);
     }
 }

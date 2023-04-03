@@ -9,6 +9,7 @@ public class AnimationController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,8 @@ public class AnimationController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Walking
+
         animator.SetFloat("walkSpeed",Mathf.Abs(rb.velocity.x));
 
         // Flip sprite according to movement direction
@@ -35,5 +38,18 @@ public class AnimationController : MonoBehaviour
         }
 
        }
+       
+       // Jumping
+
+       if (rb.velocity.y != 0)
+       {
+        animator.SetBool("isJumping", true);
+       }
+       else
+       {
+        animator.SetBool("isJumping", false);
+       }
+
     }
+
 }

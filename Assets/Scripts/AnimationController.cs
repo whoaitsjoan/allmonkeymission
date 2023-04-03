@@ -40,8 +40,9 @@ public class AnimationController : MonoBehaviour
        }
        
        // Jumping
-
-       if (rb.velocity.y != 0)
+       // The threshold is set to 1 to avoid the issue caused by the constant tiny y-velocity value even when the player is standing still.
+        
+        if (rb.velocity.y > 1)
        {
         animator.SetBool("isJumping", true);
        }
@@ -49,7 +50,6 @@ public class AnimationController : MonoBehaviour
        {
         animator.SetBool("isJumping", false);
        }
-
     }
 
 }

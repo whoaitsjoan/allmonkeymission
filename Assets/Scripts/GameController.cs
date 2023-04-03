@@ -7,9 +7,15 @@ public class GameController : MonoBehaviour
 {
     private bool fruitSortingComplete = false;
     private bool popupComplete = false;
+    private bool winGame = false;
 
     [SerializeField] private TMP_Text fruitSortingTask;
     [SerializeField] private TMP_Text popupTask;
+
+    public GameObject spaceBanana;
+    public GameObject bigMonkey;
+    public GameObject originalWall;
+    public GameObject fakeWall;
 
     private static GameController instance;
 
@@ -31,7 +37,8 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (fruitSortingComplete && popupComplete && !winGame)
+        { endOfGame(); }
     }
 
     public static GameController GetInstance()
@@ -59,5 +66,14 @@ public class GameController : MonoBehaviour
     {
         popupComplete = true;
         popupTask.fontStyle = FontStyles.Bold | FontStyles.Strikethrough;
+    }
+
+    public void endOfGame()
+    {
+        winGame = true;
+        spaceBanana.SetActive(true);
+        bigMonkey.SetActive(true);
+        originalWall.SetActive(false);
+        fakeWall.SetActive(true);
     }
 }

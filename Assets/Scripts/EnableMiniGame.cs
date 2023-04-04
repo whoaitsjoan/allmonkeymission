@@ -34,10 +34,11 @@ public class EnableMiniGame : MonoBehaviour
                 visualCue.SetActive(true);
             }
         }
-        // else 
-        // {
-        //     visualCue.SetActive(false);
-        // }
+        
+        if (!playerInRange)
+        {
+            visualCue.SetActive(false);
+        }
 
         if (Input.GetKey(KeyCode.Return) && playerInRange)
         {
@@ -64,7 +65,6 @@ public class EnableMiniGame : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             playerInRange = false;
-            visualCue.SetActive(false);
         }
     }
 
